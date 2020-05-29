@@ -45,8 +45,10 @@ namespace CraftsnMoreGalore.Controllers
 
                 try
                 {
-                    var publicKey = ConfigurationManager.AppSettings["MJ_APIKEY_PUBLIC"].ToString();
-                    var privateKey = ConfigurationManager.AppSettings["MJ_APIKEY_PRIVATE"].ToString();
+                    var publicKey = System.Web.Configuration.WebConfigurationManager.AppSettings["MJ_APIKEY_PUBLIC"];
+                    var privateKey = System.Web.Configuration.WebConfigurationManager.AppSettings["MJ_APIKEY_PRIVATE"];
+                    var accountEmail = System.Web.Configuration.WebConfigurationManager.AppSettings["Account_Email_Address"];
+
                     using (var smtpServer = new SmtpClient("in-v3.mailjet.com")
                     {
                         Port = 587,
@@ -57,17 +59,17 @@ namespace CraftsnMoreGalore.Controllers
                         // Send order email.
                         var mail = new MailMessage()
                         {
-                            From = new MailAddress("bressetteacres@gmail.com"),
+                            From = new MailAddress(accountEmail),
                             Subject = $"Order_{ order.Customer.Name }_{ DateTime.Now.ToLongDateString() }".Replace(' ', '_').Replace(",", ""),
                             Body = order.ToString(),
                         };
-                        mail.To.Add("bressetteacres@gmail.com");
+                        mail.To.Add(accountEmail);
                         smtpServer.Send(mail);
 
                         // Confirmation email.
                         mail = new MailMessage()
                         {
-                            From = new MailAddress("bressetteacres@gmail.com"),
+                            From = new MailAddress(accountEmail),
                             Subject = $"Order_Confirmation_{ order.Customer.Name }_{ DateTime.Now.ToLongDateString() }".Replace(' ', '_').Replace(",", ""),
                             Body = "Thank you for your order! I will get back with you shortly.\n\n" + order.ToString(),
                         };

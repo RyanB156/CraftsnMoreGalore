@@ -20,11 +20,6 @@ namespace CraftsnMoreGalore
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
-            var s = JsonConvert.DeserializeObject<Secret>(File.ReadAllText("~/Content/secret.json"));
-
-            Environment.SetEnvironmentVariable("MJ_APIKEY_PUBLIC", s.MJ_APIKEY_PUBLIC);
-            Environment.SetEnvironmentVariable("MJ_APIKEY_PRIVATE", s.MJ_APIKEY_PRIVATE);
         }
     }
 }
