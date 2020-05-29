@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body style="padding-top:unset; padding-bottom:unset">
+
+    <nav class="navbar navbar-expand-sm navbar-light bg-light mb-3">
+        <div>
+            <a href="/" class="row align-items-end logo-link">
+                <div class="col-sm-3 col-xs-12">
+                    <img src="~/Content/Images/logo.png" style="width:75px; height:75px" />
+                </div>
+                <div class="col">
+                    <h3 class="logo">CraftsNMoreGalore</h3>
+                </div>
+            </a>
+            <h6 class="pt-1">Custom made decorations made with passion</h6>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown mt-auto mb-0 h5">
+                    <a class="nav-link dropdown-toggle" href="#wreathSubmenu" data-toggle="dropdown" aria-expanded="false"
+                       role="button" aria-haspopup="true" id="wreathbarDropdown">Wreaths</a>
+                    <div class="dropdown-menu" id="wreathSubmenu" aria-labelledby="wreathbarDropdown">
+                        <a href="/CraftView/Wreaths" class="dropdown-item">Premade</a>
+                        <a href="#" class="dropdown-item">Custom</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown mt-auto mb-0 h5">
+                    <a class="nav-link dropdown-toggle" href="#shirtSubmenu" data-toggle="dropdown" aria-expanded="false"
+                       role="button" aria-haspopup="true" id="shirtbarDropdown">Shirts</a>
+                    <div class="dropdown-menu" id="shirtSubmenu" aria-labelledby="shirtbarDropdown">
+                        <a href="/CraftView/Shirts" class="dropdown-item">Premade</a>
+                        <a href="#" class="dropdown-item">Custom</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        @RenderBody()
+        <hr />
+        <footer class="text-center">
+            <p>&copy; @DateTime.Now.Year - Crafts 'n More Galore</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

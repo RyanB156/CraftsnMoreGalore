@@ -1,0 +1,55 @@
+﻿
+@model CraftsnMoreGalore.ViewModels.CraftListViewModel
+
+@{
+    ViewBag.Title = "Home";
+}
+
+<div class="">
+    <div class="row">
+        <div class="col">
+            <h2 class="pb-2"><strong>About</strong></h2>
+
+            <p>CraftsNMoreGalore offers a variety of custom handmade decorations. Premade decorations are available to order at a fixed price. Orders are submitted by emailing <a class="logo" href="mailto:marsha@craftsnmoregalore.com">marsha@craftsnmoregalore.com</a>. For custom decorations, you can design your own decoration by specifying the size, color, and design of the decoration in the email. Marsha will respond to requests and give a price and time estimate for custom decorations.</p>
+
+            <h2 class="pb-2"><strong>Founder</strong></h2>
+
+            <img class="pb-2 portrait" src="~/Content/Images/portrait.png" />
+
+            <p>Marsha created Crafts and More Galore to pursue her passion for making beautiful crafts. The decorations are made during free-time and she is always thinking of new designs and techniques to use in new decorations. The goal of Crafts and More Galore is to make working on crafts a sustainable income source and to share fabulous decorations with others.</p>
+        </div>
+        <div class="col-sm-4 col-xs-12">
+            <h3 class="section-heading">Featured Crafts</h3>
+
+            @{
+                int cols = 2;
+                int rows = (int)Math.Ceiling(Model.Crafts.Count / (double)cols);
+            }
+            @for (int i = 0; i < rows; i++)
+            {
+                <div class="row">
+                    @for (int j = 0; j < cols; j++)
+                    {
+                        int item = i * cols + j;
+
+                        if (item < Model.Crafts.Count)
+                        {
+                            <div class="col-sm-12 col-md-6 text-center">
+                                <a href="@Url.Content($"/Home/CraftView/{Model.Crafts[item].Id}")">
+                                    <img src="@Url.Content(Model.Crafts[item].ImagePath)" style="width:150px;height:150px" />
+                                </a>
+                            </div>
+                        }
+                    }
+                </div>
+            }
+            <div class="text-center pt-4">
+                <a class="btn btn-primary" href="/">See More</a>
+            </div>
+            
+        </div>
+    </div>
+    <div class="text-center">
+        <a class="btn-primary btn" href="/order/">Place an Order</a>
+    </div>
+</div>

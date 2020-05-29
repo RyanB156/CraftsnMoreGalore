@@ -1,0 +1,29 @@
+﻿@model List<CraftsnMoreGalore.Models.Craft>
+@{
+    ViewBag.Title = "Index";
+}
+
+<p>CraftView Index</p>
+<p>@Model.Count</p>
+@{
+    int cols = 2;
+    int rows = (int)Math.Ceiling(Model.Count / (double)cols);
+}
+@for (int i = 0; i < rows; i++)
+{
+    <div class="row">
+        @for (int j = 0; j < cols; j++)
+        {
+            int item = i * cols + j;
+
+            if (item < Model.Count)
+            {
+                <div class="col-sm-12 col-md-6 text-center">
+                    <a href="@Url.Content($"/Home/CraftView/{Model[item].Id}")">
+                        <img src="@Url.Content(Model[item].ImagePath)" style="width:150px;height:150px" />
+                    </a>
+                </div>
+            }
+        }
+    </div>
+}

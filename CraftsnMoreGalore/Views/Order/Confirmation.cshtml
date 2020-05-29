@@ -1,0 +1,19 @@
+﻿@model CraftsnMoreGalore.Models.Order
+@{
+    ViewBag.Title = "Confirmation";
+}
+
+<div>
+    <p>I have received your order with the following information:</p>
+
+    <strong>Name:</strong> @Html.DisplayFor(m => m.Customer.Name) <br />
+
+    <strong>Email:</strong> @Html.DisplayFor(m => m.Customer.EmailAddress) <br />
+
+    <strong>Number:</strong> @Html.DisplayFor(m => m.Customer.Number) <br />
+
+    <strong>Order:</strong> <span style="word-wrap:break-word">@Model.Description</span>
+</div>
+
+
+

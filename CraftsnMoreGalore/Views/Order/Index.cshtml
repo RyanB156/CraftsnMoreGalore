@@ -1,0 +1,43 @@
+﻿@model CraftsnMoreGalore.Models.Order
+@{
+    ViewBag.Title = "Index";
+}
+
+@using (@Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="container">
+
+        <h2>Place an Order</h2>
+
+        <div class="row p-2">
+            <label class="pr-2" for="Name">Name</label>
+            @Html.TextBoxFor(m => m.Customer.Name)
+            @Html.ValidationMessageFor(m => m.Customer.Name, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="row p-2">
+            <label class="pr-2" for="EmailAddress">Email Address</label>
+            @Html.TextBoxFor(m => m.Customer.EmailAddress)
+            @Html.ValidationMessageFor(m => m.Customer.EmailAddress, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="row p-2">
+            <label class="pr-2" for="Number">Phone Number</label>
+            @Html.TextBoxFor(m => m.Customer.Number)
+            @Html.ValidationMessageFor(m => m.Customer.Number, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="row p-2">
+            <label class="pr-2" for="Description">Details of your order</label>
+            @Html.TextAreaFor(m => m.Description)
+            @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
+        </div>
+
+        <input class="btn btn-primary" type="submit" value="Submit" />
+    </div>
+
+}
+
