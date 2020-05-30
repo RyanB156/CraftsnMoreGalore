@@ -19,23 +19,27 @@ namespace CraftsnMoreGalore.Models
 
         public Craft() { }
 
-        private Craft(int index, string path, string name, string description, string type)
+        private Craft(string path, string name, string description, string type)
         {
-            Id = index;
             ImagePath = path;
             Name = name;
             Description = description;
             Type = type;
         }
 
-        public static Craft Wreath(int id, string path, string name, string description)
+        public static Craft Wreath(string path, string name, string description)
         {
-            return new Craft(id, path, name, description, "Wreath");
+            return new Craft(path, name, description, "Wreath");
         }
 
-        public static Craft Shirt(int id, string path, string name, string description)
+        public static Craft Shirt(string path, string name, string description)
         {
-            return new Craft(id, path, name, description, "Shirt");
+            return new Craft(path, name, description, "Shirt");
+        }
+
+        public static Craft Misc(string path, string name, string description)
+        {
+            return new Craft(path, name, description, "Misc");
         }
     }
 }
